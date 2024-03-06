@@ -17,8 +17,10 @@
 
   </div>
 
-  <aside class="aside">
-    <button class="aside__buttom" onclick="showAside()">
+  <aside class="aside" id="asideId">
+    <!-- <aside class="aside__move"> -->
+    <!-- <button class="aside__buttom" onclick="showAside()" ><p>Filtros</p></button> -->
+    <button class="aside__buttom">
       <p>Filtros</p>
     </button>
     <h3 class="aside__h3">Filtros</h3>
@@ -147,18 +149,17 @@
     </section>
   </main>
   <script>
-    const showAside = () => {
-      var aside = document.querySelector(".aside");
-      var asideBtn = document.querySelector(".aside__buttom");
-      var clicked = false;
-      if (clicked) {
-        aside.style.left = "0px";
-        clicked = false;
+    var aside = document.querySelector("#asideId");
+    var asideBtn = document.querySelector(".aside__buttom");
+    let isTrue = false;
+    asideBtn.addEventListener('click', function() {
+      isTrue = !isTrue;
+      if (isTrue) {
+        aside.className="aside__move"
       } else {
-        aside.style.left = "-420px";
-        clicked = true;
+        aside.className="aside"
       }
-    }
+    });
   </script>
 </body>
 
