@@ -47,107 +47,14 @@
   </aside>
   <main class="main">
     <section class="cards-container">
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
-      <section class="card">
-        <img src="../assets/screen_2x.webp" alt="" class="card__img">
-        <section class="card__text">
-          <p class="card__text-item--bolder">2000000</p>
-          <p class="card__text-item">200mtr2</p>
-          <p class="card__text-item">Popayan-Cauca</p>
-          <p class="card__text-item--lighter">Cr48e #1-46</p>
-        </section>
-        <button class="card__buttom">Contactar</button>
-      </section>
-
+      <?php
+      for ($i = 0; $i < 10; $i++) {
+        include("../components/card.php");
+      }
+      ?>
     </section>
   </main>
+  <?php include("../components/footer.php") ?>
   <script>
     var aside = document.querySelector("#asideId");
     var asideBtn = document.querySelector(".aside__buttom");
@@ -155,9 +62,9 @@
     asideBtn.addEventListener('click', function() {
       isTrue = !isTrue;
       if (isTrue) {
-        aside.className="aside__move"
+        aside.className = "aside__move"
       } else {
-        aside.className="aside"
+        aside.className = "aside"
       }
     });
   </script>
