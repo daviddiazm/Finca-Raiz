@@ -103,7 +103,7 @@
 
         <section class="upload__element-container upload__element-container--big">
           <h3>Ingrese una imagen de la casa</h3>
-          <input type="file" name="uploadImage" id="">
+          <input type="file" accept="image/*" name="uploadImage" id="">
         </section>
     </form>
   </main>
