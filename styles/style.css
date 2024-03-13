@@ -4,6 +4,7 @@
   --azul-hielo: #f0f8ff;
   --blanco-humo: #f5f5f5;
   --azul-oscuro: #153054;
+  --azul-rey: #0056b3;
   --color-secundario: #00ff00;
 }
 
@@ -183,6 +184,11 @@ button:active {
   background-color: #012345;
 }
 
+button a {
+  text-decoration: none;
+  color: inherit;
+}
+
 @font-face {
   font-family: "Roboto";
   src: url('/assets/fonts/Roboto-Regular.ttf') format('truetype');
@@ -239,6 +245,8 @@ button:active {
 /* footer */
 
 .footer {
+  /* position: relative; */
+  /* z-index: 5; */
   background-color: #333;
   color: #fff;
   padding: 30px 0;
@@ -575,19 +583,26 @@ button:active {
 }
 
 .main__login-blur {
-  padding: 5vw;
+  height: 100vh;
+  /* padding: 0px 5vw; */
+  padding: 0px auto;
   background-color: rgba(159, 176, 190, 0.557);
   backdrop-filter: blur(5px);
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .box__back {
-  width: 100%;
-  padding: 10px 20px;
+  width: 80%;
+  /* padding: 10px 20px; */
   display: flex;
   justify-content: center;
   background-color: #0057b378;
   backdrop-filter: blur(3px);
+
 }
 
 .box__back section {
@@ -605,14 +620,64 @@ button:active {
   width: 100%;
   max-width: 300px;
   position: relative;
-  top: -187px;
-  left: 10px;
+  bottom: 22%;
+  left: 10%;
+  transition: all 1s ease;
 }
 
 .container__login-register form {
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 100%;
   padding: 80px 20px;
   position: absolute;
   background-color: var(--blanco-humo);
   border-radius: 15px;
+}
+
+.container__login-register form h3 {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.container__login-register form input {
+  padding: 5px;
+}
+
+.container__login-register--sub {
+  padding: 5px;
+  background-color: var(--azul-rey);
+  color: var(--azul-hielo);
+  font-size: 1.2rem;
+  border-color: transparent;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.form__login {}
+
+.form__register {
+  /* visibility: hidden; */
+}
+
+
+
+@media screen and (max-width: 850px) {
+  .main__login {}
+
+  .box__back {
+    max-width: 350px;
+    height: 300px;
+    flex-direction: column;
+    margin: auto;
+  }
+
+  .box__back section {
+    margin: 0px;
+    position: absolute;
+  }
+
+
 }
