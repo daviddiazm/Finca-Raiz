@@ -24,7 +24,7 @@
       <p>Filtros</p>
     </button>
     <h3 class="aside__h3">Filtros</h3>
-    <form action="listaInmbuebles.php" method="post">
+    <form action="lista_inmuebles.php" method="post">
       <section class="filters">
         <h4 class="filters__h4">Precio</h4>
         <div class="filters__price-container">
@@ -111,14 +111,47 @@
           <input type="radio" name="stratum" id="" class="filters__stratum" value="3">3
           <input type="radio" name="stratum" id="" class="filters__stratum" value="4">4
         </div>
+        <hr>
+      </section>
+
+      <section class="filters">
+        <h4 class="filters__h4">Tipo de inmueble</h4>
+        <div class="filters__stratum-container">
+          <input type="radio" name="casa" id="" class="filters__stratum" value="casa">casa
+          <input type="radio" name="finca" id="" class="filters__stratum" value="finca">finca
+          <input type="radio" name="apartamento" id="" class="filters__stratum" value="apartamento">apartamento
+        </div>
         <!-- <hr> -->
       </section>
+      <input type="submit" value="buscar">
     </form>
   </aside>
 
   <main class="main">
     <section class="cards-container">
       <?php
+      if ($_POST) {
+        $isCasa = (isset($_POST['casa'])) ? $_POST['casa'] : FALSE;
+        $isFinca = (isset($_POST['finca'])) ? $_POST['finca'] : FALSE;
+        $isApartamento = (isset($_POST['apartamento'])) ? $_POST['apartamento'] : FALSE;
+        //print_r($isCasa, $isApartamento, $isFinca);
+        if ($isCasa) {
+          for ($i = 0; $i < 10; $i++) {
+            include("../components/cardCasa.php");
+            $isCasa = false;
+          }
+        } else if ($isFinca) {
+          for ($i = 0; $i < 10; $i++) {
+            include("../components/cardFinca.php");
+            $isFinca = false;
+          }
+        } else if ($isApartamento) {
+          for ($i = 0; $i < 10; $i++) {
+            include("../components/cardApartamento.php");
+            $isApartamento = false;
+          }
+        }
+      }
       for ($i = 0; $i < 10; $i++) {
         include("../components/card.php");
       }
