@@ -622,7 +622,7 @@ button a {
   position: relative;
   bottom: 22%;
   left: 10%;
-  transition: all 1s ease;
+
 }
 
 .container__login-register form {
@@ -635,6 +635,13 @@ button a {
   position: absolute;
   background-color: var(--blanco-humo);
   border-radius: 15px;
+}
+
+.form__register{
+  transition: 1s transform;
+}
+.form__login{
+  transition: 1s transform;
 }
 
 .container__login-register form h3 {

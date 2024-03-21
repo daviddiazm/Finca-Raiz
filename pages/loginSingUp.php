@@ -52,14 +52,19 @@
     function login() {
       formulario__register.style.visibility = "hidden";
       formulario__login.style.visibility = "visible"
-      formulario__login.style.right = "100%"
+      // formulario__login.style.right = "100%"
+      formulario__login.style.transform = "translateX(-100%)"
+      formulario__register.style.transform = "translateX(-100%)"
     }
 
 
     function register() {
       formulario__login.style.visibility = "hidden"
       formulario__register.style.visibility = "visible"
-      formulario__register.style.left = "10%"
+      // formulario__register.style.left = "10%"
+      formulario__register.style.transform = "translateX(10%)"
+      formulario__login.style.transform = "translateX(10%)"
+
     }
   </script>
 </body>
