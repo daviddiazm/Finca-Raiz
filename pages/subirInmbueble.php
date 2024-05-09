@@ -1,3 +1,29 @@
+<?php 
+include("../conexion.php");
+
+if (isset($_POST['subirPrecioInmueble'])) {
+  $precio = $_POST['subirPrecioInmueble'];
+  $metros = $_POST['subirMtrInmueble'];
+  $departamento = $_POST['selectDep'];
+  $municipio = $_POST['selectMun'];
+  $direccion = $_POST['subirDireccionInmueble'];
+  $estrato = $_POST['uploadStratum'];
+  $category = $_POST['uploadCategory'];
+
+  $sql = "INSERT INTO `inmueble` (`id_inmueble`, `price`, `mtr`, `departamento`, `municipio`, `direccion`, `estrato`) VALUES (NULL, '123', '123', 'cauca', 'popayan', 'a12312', '4')";
+  $sentencia = $conexion->prepare("insert into inmueble(price,mtr,departamento,municipio,direccion,estrato,category) value (?,?,?,?,?,?,?)");
+  $resultado = $sentencia->execute([$precio,$metros,$departamento,$municipio,$direccion,$estrato,$category]);
+  if($resultado == true) {
+    echo "inmueble subido correctamente";
+  }
+
+
+}
+
+
+?>
+
+
 <?php include("../components/head.php") ?>
 
 <body>
@@ -18,7 +44,7 @@
       <section class="upload__element-container">
         <h3>Subir el departamento en el que se encuentra el inmbueble</h3>
         <label for="selectDep">Selecciona un departamento:</label>
-        <select id="selectDep">
+        <select name="selectDep">
           <option value=""></option>
           <option value="amazonas">Amazonas</option>
           <option value="antioquia">Antioquia</option>
@@ -59,7 +85,7 @@
         <section class="upload__element-container">
           <h3>Subir el municipio en el que se encuentra el inmbueble</h3>
           <label for="selectMun">Selecciona un municiop:</label>
-          <select id="selectMun">
+          <select name="selectMun">
             <option value=""></option>
             <option value="bogota">Bogotá D.C.</option>
             <option value="medellin">Medellín</option>
@@ -100,11 +126,18 @@
           <input type="radio" name="uploadStratum" id="" class="upload__stratum" value="3">3
           <input type="radio" name="uploadStratum" id="" class="upload__stratum" value="4">4
         </section>
+        <section class="upload__element-container">
+          <h3>Selecciona el estrato</h3>
+          <input type="radio" name="uploadCategory" id="" class="upload__stratum" value="finca">Finca
+          <input type="radio" name="uploadCategory" id="" class="upload__stratum" value="casa">Casa
+          <input type="radio" name="uploadCategory" id="" class="upload__stratum" value="apartamento">Apartamento
+        </section>
 
         <section class="upload__element-container upload__element-container--big">
           <h3>Ingrese una imagen de la casa</h3>
           <input type="file" accept="image/*" name="uploadImage" id="">
         </section>
+        <input type="submit" value="Enviar">
     </form>
   </main>
   <?php include("../components/footer.php") ?>

@@ -1,14 +1,20 @@
-<?php ?>
+<?php include('../components/head.php')?>
+<?php 
+include("../conexion.php");
 
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../styles/style.css">
-  <title>Finca Raiz</title>
-</head>
+if(isset($_GET['id'])){
+  echo $_GET['id'];
+  $_SESSION['idInmueble'] = $_GET['id'];
+}
+function subirInmueble($id) {
+  $id = $_GET['id'];
+  echo "el id es "+$id;
+  $_SESSION['idInmueble'] = $id;
+}
+
+
+?>
 
 <body class="body">
   <?php include("../components/header.php") ?>
@@ -117,9 +123,14 @@
       <section class="filters">
         <h4 class="filters__h4">Tipo de inmueble</h4>
         <div class="filters__stratum-container">
-          <input type="radio" name="casa" id="" class="filters__stratum" value="casa">casa
-          <input type="radio" name="finca" id="" class="filters__stratum" value="finca">finca
-          <input type="radio" name="apartamento" id="" class="filters__stratum" value="apartamento">apartamento
+          <?php
+          $sentencia = $conexion->prepare("SELECT * FROM `categoria`");
+          $sentencia->execute();
+          while ($consulta = $sentencia->fetch()) {
+            $categoriaName = $consulta['categoriaName'];
+            echo '<input type="radio" name="'.$categoriaName.'" id="" class="filters__stratum" value="'.$categoriaName.'">'.$categoriaName.'';
+          }
+          ?>
         </div>
         <!-- <hr> -->
       </section>
@@ -130,30 +141,57 @@
   <main class="main">
     <section class="cards-container">
       <?php
-      if ($_POST) {
-        $isCasa = (isset($_POST['casa'])) ? $_POST['casa'] : FALSE;
-        $isFinca = (isset($_POST['finca'])) ? $_POST['finca'] : FALSE;
-        $isApartamento = (isset($_POST['apartamento'])) ? $_POST['apartamento'] : FALSE;
-        //print_r($isCasa, $isApartamento, $isFinca);
-        if ($isCasa) {
-          for ($i = 0; $i < 10; $i++) {
-            include("../components/cardCasa.php");
-            $isCasa = false;
-          }
-        } else if ($isFinca) {
-          for ($i = 0; $i < 10; $i++) {
-            include("../components/cardFinca.php");
-            $isFinca = false;
-          }
-        } else if ($isApartamento) {
-          for ($i = 0; $i < 10; $i++) {
-            include("../components/cardApartamento.php");
-            $isApartamento = false;
-          }
-        }
-      }
-      for ($i = 0; $i < 10; $i++) {
-        include("../components/card.php");
+      // if ($_POST) {
+      //   $isCasa = (isset($_POST['casa'])) ? $_POST['casa'] : FALSE;
+      //   $isFinca = (isset($_POST['finca'])) ? $_POST['finca'] : FALSE;
+      //   $isApartamento = (isset($_POST['apartamento'])) ? $_POST['apartamento'] : FALSE;
+      //   //print_r($isCasa, $isApartamento, $isFinca);
+      //   if ($isCasa) {
+      //     for ($i = 0; $i < 10; $i++) {
+      //       include("../components/cardCasa.php");
+      //       $isCasa = false;
+      //     }
+      //   } else if ($isFinca) {
+      //     for ($i = 0; $i < 10; $i++) {
+      //       include("../components/cardFinca.php");
+      //       $isFinca = false;
+      //     }
+      //   } else if ($isApartamento) {
+      //     for ($i = 0; $i < 10; $i++) {
+      //       include("../components/cardApartamento.php");
+      //       $isApartamento = false;
+      //     }
+      //   }
+      // }
+      // for ($i = 0; $i < 10; $i++) {
+      //   include("../components/card.php");
+      // }
+      // ?>
+
+      <?php 
+      $sentencia = $conexion->prepare("SELECT * FROM `inmueble`");
+      $sentencia->execute();
+      while ($consulta = $sentencia->fetch()) {
+        $idInmueble = $consulta['id_inmueble'];
+        $precio = $consulta['price'];
+        $metros = $consulta['mtr'];
+        $municipio = $consulta['municipio'];
+        $departamento = $consulta['departamento'];
+        $direccion = $consulta['direccion'];
+        
+        echo '<section class="card">';
+        echo ' <img src="../assets/screen_2x.webp" alt="" class="card__img">';
+        echo '    <section class="card__text">';
+        echo '    <p class="card__text-item--bolder">'.$precio.'</p>';
+        echo '    <p class="card__text-item">'.$metros.'mtr2</p>';
+        echo '    <p class="card__text-item">'.$municipio.'-'.$departamento.'</p>';
+        echo '    <p class="card__text-item--lighter">'.$direccion.'</p>';
+        echo '  </section>';
+        // echo '  <button class="card__buttom">Contactar</button>';
+        // echo '  <a class="card__buttom" target="_blank" href=lista_inmuebles.php?id="'.$idInmueble.'" >Contactar</a>';
+        // echo '  <a class="card__buttom" target="_blank" href=inmuebleDetail.php?id="'.$idInmueble.'" >Contactar</a>';
+        echo '  <a class="card__button" target="_blank" href="inmuebleDetail.php?id='.$idInmueble.'">Contactar</a>';
+        echo '</section>';
       }
       ?>
     </section>
