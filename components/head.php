@@ -1,3 +1,18 @@
+<?php
+session_start();
+if($_SESSION['name'] != "david") {
+  // header("Location: ./loginSingUp.php");
+}
+if(isset($_SESSION['name'])){
+  echo "<p>Hola ".$_SESSION['name']."</p>";
+} else {
+  header("Location: ./loginSingUp.php");
+}
+// print_r($_SESSION);
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
